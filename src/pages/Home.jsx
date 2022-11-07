@@ -9,6 +9,7 @@ import Services from 'services/Services'
 import ProductList from 'components/UI/ProductList'
 import products from 'assets/data/products'
 import counter from 'assets/images/counter-timer-img.png'
+import Clock from 'components/UI/Clock'
 
 const Home = () => {
     const [trendingProducts, setTrendingProducts] = useState([])
@@ -81,8 +82,20 @@ const Home = () => {
             <section className="timer__count">
                 <Container>
                     <Row>
-                        <Col lg="6" md="6"></Col>
                         <Col lg="6" md="6">
+                            <div className="clock__top-content">
+                                <h4 className="text-white fs-6 mb-2">Limited Offers</h4>
+                                <h3 className="text-white fs-5 mb-3">Quality Armchair</h3>
+                            </div>
+                            <Clock />
+                            <motion.button
+                                whileTap={{ scale: 1.025 }}
+                                className="buy__btn store__btn mt-4"
+                            >
+                                <Link to="/shop">Visit Store</Link>
+                            </motion.button>
+                        </Col>
+                        <Col lg="6" md="6" className="text-end">
                             <img src={counter} alt="" />
                         </Col>
                     </Row>
