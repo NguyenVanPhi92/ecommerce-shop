@@ -30,3 +30,43 @@
         }
     }
 }
+
+@media only screen and (max-width: 992px) {
+    .service__item {
+        padding: 10px;
+
+        span {
+            i {
+                font-size: 1.8rem;
+                padding: 5px;
+            }
+        }
+
+        h3 {
+            font-size: 1rem;
+        }
+    }
+
+    .section__title {
+        font-size: 1.7rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .service__item {
+        margin-bottom: 1.2rem;
+
+        span {
+            i {
+                font-size: 1.4em;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .service__item {
+        padding: 20px;
+    }
+}

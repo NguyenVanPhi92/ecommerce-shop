@@ -1,8 +1,6 @@
-import React from 'react'
-import { Col, Container, ListGroup, ListGroupItem, Row } from 'reactstrap'
-import logo from 'assets/images/eco-logo.png'
-import './footer.scss'
 import { Link } from 'react-router-dom'
+import { Col, Container, ListGroup, ListGroupItem, Row } from 'reactstrap'
+import './footer.scss'
 
 const Footer = () => {
     const year = new Date().getFullYear()
@@ -10,7 +8,7 @@ const Footer = () => {
         <footer className="footer">
             <Container>
                 <Row>
-                    <Col lg="4">
+                    <Col lg="4" className="mb-4" mb="6">
                         <div className="logo">
                             <div>
                                 <h1 className="text-white ">Multimart</h1>
@@ -21,7 +19,7 @@ const Footer = () => {
                             lore lore lore lore lore lore
                         </p>
                     </Col>
-                    <Col lg="3">
+                    <Col lg="3" md="3" className="mb-4">
                         <div className="footer__quick-links">
                             <h4 className="quick__links-title text-white">Top Categories</h4>
                             <ListGroup className="mb-3">
@@ -40,7 +38,7 @@ const Footer = () => {
                             </ListGroup>
                         </div>
                     </Col>
-                    <Col lg="2">
+                    <Col lg="2" md="3" className="mb-4">
                         <div className="footer__quick-links">
                             <h4 className="quick__links-title text-white">Useful Links</h4>
                             <ListGroup className="mb-3">
@@ -59,25 +57,25 @@ const Footer = () => {
                             </ListGroup>
                         </div>
                     </Col>
-                    <Col lg="3">
+                    <Col lg="3" md="4" className="mb-4">
                         <div className="footer__quick-links">
                             <h4 className="quick__links-title text-white">Contract</h4>
                             <ListGroup className="mb-3">
                                 <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
                                     <span className="footer-contact">
-                                        <i class="ri-map-pin-line"></i>
+                                        <i className="ri-map-pin-line"></i>
                                     </span>
                                     <p>123, anda anadka; wdnandwanalnda af</p>
                                 </ListGroupItem>
                                 <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
                                     <span className="footer-contact">
-                                        <i class="ri-phone-line"></i>
+                                        <i className="ri-phone-line"></i>
                                     </span>
                                     <p>+84 867876112</p>
                                 </ListGroupItem>
                                 <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
                                     <span className="footer-contact">
-                                        <i class="ri-mail-line"></i>
+                                        <i className="ri-mail-line"></i>
                                     </span>
                                     <p>nguyenvanphi.fi@gmail.com</p>
                                 </ListGroupItem>
@@ -85,8 +83,10 @@ const Footer = () => {
                         </div>
                     </Col>
 
-                    <Col lg="12">
-                        <p className="footer__copyrigth">Copyright {year} developer NV Phi</p>
+                    <Col lg="12" className="mb-4">
+                        <p className="footer__copyrigth text-center">
+                            Copyright {year} developer NV Phi
+                        </p>
                     </Col>
                 </Row>
             </Container>

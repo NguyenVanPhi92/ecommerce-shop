@@ -105,7 +105,7 @@ const Home = () => {
                                 <Link to="/shop">Visit Store</Link>
                             </motion.button>
                         </Col>
-                        <Col lg="6" md="6" className="text-end">
+                        <Col lg="6" md="6" className="text-end counter__img">
                             <img src={counter} alt="" />
                         </Col>
                     </Row>

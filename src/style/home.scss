@@ -59,3 +59,45 @@
         }
     }
 }
+
+.section__title {
+    font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 992px) {
+    .hero__content {
+        h2 {
+            font-size: 1.6rem !important;
+            color: red;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 22px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .hero__content h2 {
+        h2 {
+            font-size: 1.4rem !important;
+        }
+    }
+
+    .clock__top-content {
+        h4 {
+            font-size: 9rem;
+        }
+
+        h3 {
+            font-size: 1rem !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .counter__img {
+        display: none;
+    }
+}

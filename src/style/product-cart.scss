@@ -34,3 +34,32 @@
         }
     }
 }
+
+@media only screen and (max-width: 992px) {
+    .product__info {
+        h3 {
+            a {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .product__info {
+        h3 {
+            a {
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    .product__cart-bottom {
+        span {
+            i {
+                padding-top: 0;
+                margin-bottom: 40px;
+            }
+        }
+    }
+}
