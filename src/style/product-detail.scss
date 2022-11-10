@@ -32,3 +32,54 @@
 .active__tab {
     font-weight: 600;
 }
+
+.tab__content {
+    p {
+        line-height: 30px;
+    }
+}
+
+// .review__wrapper {
+//     color: coral;
+//     font-weight: 600;
+
+//     ul {
+//         li {
+//             p {
+//             }
+//         }
+//     }
+// }
+
+// .review__form {
+//     width: 70%;
+//     width: auto;
+//     margin-top: 50px;
+
+//     h4 {
+//         font-size: 1.2rem;
+//         font-weight: 600;
+//         margin-bottom: 30px;
+//     }
+
+//     .form__group {
+//         width: 100%;
+//         border: 1px solid var(--primary-color);
+//         border-radius: 5px;
+//         padding: 8px 20px;
+
+//         input {
+//         }
+//     }
+// }
+
+@media only screen and (max-width: 768px) {
+    .product__details {
+        h2 {
+            font-size: 1.3rem;
+        }
+    }
+    .rating__group {
+        column-gap: 0.5rem !important;
+    }
+}

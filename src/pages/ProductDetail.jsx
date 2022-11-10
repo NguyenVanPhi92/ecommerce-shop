@@ -1,18 +1,52 @@
 import products from 'assets/data/products'
 import Helmet from 'components/Helmet/Helmet'
 import CommonSection from 'components/UI/CommonSection'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Col, Container, Row } from 'reactstrap'
 import 'style/product-detail.scss'
 import { motion } from 'framer-motion'
+import ProductList from 'components/UI/ProductList'
+import { useDispatch } from 'react-redux'
+import { cartActions } from 'app/slices/cartSlice'
+import { toast } from 'react-toastify'
 
 const ProductDetail = () => {
     const { id } = useParams()
     const [tab, setTab] = useState('desc')
+    const [rating, setRating] = useState(null)
+    const reviewUser = useRef('')
+    const reviewMsg = useRef('')
+    const dispatch = useDispatch()
     const product = products.find((item) => item.id === id)
-    const { avgRating, category, description, imgUrl, price, productName, reviews, shortDesc } =
+    const { avgRating, description, category, imgUrl, price, productName, reviews, shortDesc } =
         product
+
+    const relatedProducts = products.filter((item) => item.category === category)
+
+    //handle
+    const submitHandle = (e) => {
+        e.preventDefault()
+
+        const reviewUserName = reviewUser.current.value
+        const reviewUserMsg = reviewMsg.current.value
+    }
+
+    const addToCart = () => {
+        dispatch(
+            cartActions.addItem({
+                id: id,
+                image: imgUrl,
+                productName,
+                price,
+            }),
+        )
+        toast.success('Add product successfully')
+    }
+
+    useEffect(() => {
+        window.screenTop(0, 0)
+    }, [product])
 
     return (
         <Helmet title={productName}>
@@ -27,7 +61,7 @@ const ProductDetail = () => {
                         <Col lg="6">
                             <div className="product__details">
                                 <h2>{productName}</h2>
-                                <div className="product__rating d-flex align-content-center gap-5 mb-3">
+                                <div className="product__rating d-flex align-content-center gap-5 mb-3 rating__group">
                                     <div>
                                         <span>
                                             <i className="ri-star-fill"></i>
@@ -49,10 +83,17 @@ const ProductDetail = () => {
                                     <p>({avgRating}ratings)</p>
                                 </div>
 
-                                <span className="product__price">${price}</span>
+                                <div>
+                                    <span className="product__price">${price}</span>
+                                    <span className="ms-3">Category: {category}</span>
+                                </div>
                                 <p>{shortDesc}</p>
 
-                                <motion.button whileTap={{ scale: 1.045 }} className="buy__btn">
+                                <motion.button
+                                    whileTap={{ scale: 1.045 }}
+                                    className="buy__btn"
+                                    onClick={addToCart}
+                                >
                                     Add to cart
                                 </motion.button>
                             </div>
@@ -85,9 +126,69 @@ const ProductDetail = () => {
                                     <p>{description}</p>
                                 </div>
                             ) : (
-                                <div>reviews</div>
+                                <div className="product__review mt-5">
+                                    <div className="review__wrapper">
+                                        <ul>
+                                            {reviews.map((item, index) => (
+                                                <li className="mb-4" key={index}>
+                                                    <h6>Jhon Doe</h6>
+                                                    <span>{item.rating} (average rating)</span>
+                                                    <p>{item.text}</p>
+                                                </li>
+                                            ))}
+                                        </ul>
+
+                                        <div className="review__form">
+                                            <h4>Leave your experience</h4>
+
+                                            <form action="" onSubmit={submitHandle}>
+                                                <div className="form__group">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Enter name"
+                                                        ref={reviewUser}
+                                                    />
+                                                </div>
+
+                                                <div className="form__group">
+                                                    <span onClick={() => setRating(1)}>
+                                                        1 <i className="ri-star-s-fill" />
+                                                    </span>
+                                                    <span onClick={() => setRating(2)}>
+                                                        2 <i className="ri-star-s-fill" />
+                                                    </span>
+                                                    <span onClick={() => setRating(3)}>
+                                                        3 <i className="ri-star-s-fill" />
+                                                    </span>
+                                                    <span onClick={() => setRating(4)}>
+                                                        4 <i className="ri-star-s-fill" />
+                                                    </span>
+                                                    <span onClick={() => setRating(5)}>
+                                                        5 <i className="ri-star-s-fill" />
+                                                    </span>
+                                                </div>
+
+                                                <div className="form__group">
+                                                    <textarea
+                                                        type="text"
+                                                        placeholder="Review message..."
+                                                        ref={reviewMsg}
+                                                    />
+                                                </div>
+
+                                                <button className="buy__btn">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             )}
                         </Col>
+
+                        <Col lg="12" className="mt-5">
+                            <h2 className="related__title">You might also like</h2>
+                        </Col>
+
+                        <ProductList data={relatedProducts} />
                     </Row>
                 </Container>
             </section>

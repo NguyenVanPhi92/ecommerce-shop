@@ -15,7 +15,7 @@ const ProductCart = ({ item }) => {
                 id: item.id,
                 productName: item.productName,
                 price: item.price,
-                image: item.imgurl,
+                imgUrl: item.imgUrl,
             }),
         )
 
